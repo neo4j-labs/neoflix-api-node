@@ -7,12 +7,12 @@ export default class GenreService {
         // Assign the driver here
     }
 
-    all() {
-        return Promise.resolve(genres)
+    async all() {
+        return genres
     }
 
-    find(name) {
-        return Promise.resolve(genres.find(genre => genre.name === name))
+    async find(name) {
+        return genres.find(genre => genre.name === name)
     }
 
 }

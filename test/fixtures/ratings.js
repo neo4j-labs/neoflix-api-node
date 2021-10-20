@@ -1,4 +1,4 @@
-export const reviews = [
+export const ratings = [
     {
         rating: 2.0,
         user: {

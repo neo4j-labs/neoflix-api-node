@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { hash } from 'bcrypt'
 import { user } from "../../test/fixtures/users.js";
+import ValidationError from '../errors/validation.error.js';
 
 export default class AuthService {
     driver;
@@ -23,7 +24,12 @@ export default class AuthService {
     }
 
     async register(email, plainPassword, name) {
-        const encrypted = hash(plainPassword)
+        if (email !== 'graphacademy@neo4j.com') {
+            throw new ValidationError(`An account already exists with the email address ${email}`, {
+                email: 'Email address taken'
+            })
+        }
+        const encrypted = await hash(plainPassword, parseInt(process.env.SALT_ROUNDS))
 
         // TODO: Save user
 
