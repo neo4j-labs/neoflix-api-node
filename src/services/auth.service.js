@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken'
+import { hash } from 'bcrypt'
 import { user } from "../../test/fixtures/users.js";
 
 export default class AuthService {
@@ -7,15 +9,29 @@ export default class AuthService {
         // Assign the driver here
     }
 
-    authenticate(email, password) {
+    async authenticate(email, password) {
         if (email === 'graphacademy@neo4j.com' && password === 'letmein') {
-            return user
+            const { password, ...claims } = user.properties
+
+            return {
+                ...claims,
+                token: jwt.sign(claims, process.env.JWT_SECRET)
+            }
         }
 
         return false
     }
 
-    register(email, password, name) {
-        return user
+    async register(email, plainPassword, name) {
+        const encrypted = hash(plainPassword)
+
+        // TODO: Save user
+
+        const { password, ...claims } = user.properties
+
+        return {
+            ...claims,
+            token: jwt.sign(claims, process.env.JWT_SECRET)
+        }
     }
 }
