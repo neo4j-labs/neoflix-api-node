@@ -11,12 +11,12 @@ router.post('/login',
     }
 )
 
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
     try {
         const { email, password, name } = req.body
 
         const authService = new AuthService()
-        const output = authService.register(email, password, name)
+        const output = await authService.register(email, password, name)
 
         res.json(output)
     }
