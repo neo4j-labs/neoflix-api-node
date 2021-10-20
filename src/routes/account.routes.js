@@ -1,13 +1,16 @@
 import { Router } from 'express'
 import passport from 'passport'
+import FavoriteService from '../services/favorite.service.js'
 
 const router = new Router()
 
+/**
+ * Require jwt authentication for these routes
+ */
+router.use(passport.authenticate('jwt', { session: false }))
 
-
-router.get('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+router.get('/', (req, res, next) => {
     try {
-        console.log('in');
         res.json(req.user)
     }
     catch (e) {
@@ -15,20 +18,40 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res, nex
     }
 })
 
-router.get('/list', (req, res, next) => {
+router.get('/favorites', async (req, res, next) => {
     try {
-        console.log('in');
-        res.json([])
+        const service = new FavoriteService()
+        const favorites = await service.all(req.user.userId)
+
+        res.json(favorites)
     }
     catch (e) {
         next(e)
     }
 })
 
-// app.post('/profile', passport.authenticate('jwt', { session: false }),
-//     function(req, res) {
-//         res.send(req.user.profile);
-//     }
-// );
+router.post('/favorites/:id', async (req, res, next) => {
+    try {
+        const service = new FavoriteService()
+        const favorite = await service.add(req.user.userId, req.params.id)
+
+        res.json(favorite)
+    }
+    catch (e) {
+        next(e)
+    }
+})
+
+router.delete('/favorites/:id', async (req, res, next) => {
+    try {
+        const service = new FavoriteService()
+        const favorite = await service.remove(req.user.userId, req.params.id)
+
+        res.json(favorite)
+    }
+    catch (e) {
+        next(e)
+    }
+})
 
 export default router

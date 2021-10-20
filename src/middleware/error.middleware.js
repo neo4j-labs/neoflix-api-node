@@ -7,5 +7,6 @@ export default function errorMiddleware(error, req, res, next) {
             code: error.code || 500,
             message: error.message,
             trace: error.trace,
+            details: error.details,
         })
 }

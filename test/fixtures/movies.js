@@ -10,7 +10,7 @@ WITH n {
   .year,
   .languages,
   .plot,
-  rating: n.imdbRating,
+  imdbRating: n.imdbRating,
   directors: [ (n)<-[:DIRECTED]-(d) | d { id: d.imdbId, .name } ],
   actors: [ (n)<-[:ACTED_IN]-(p) | p { id: p.imdbId, .name } ][0..5],
   genres: [ (n)-[:IN_GENRE]->(g) | g {link: '/genres/'+ g.name, .name}]
@@ -60,7 +60,7 @@ export const popular = [
                 id: '0001104'
             }
         ],
-        rating: 9.3,
+        imdbRating: 9.3,
         id: '0111161',
         title: 'Shawshank Redemption, The',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/5KCVkau1HEl7ZzfPsKAPM0sMiKc.jpg'
@@ -107,10 +107,11 @@ export const popular = [
                 id: '0000338'
             }
         ],
-        rating: 9.2,
+        imdbRating: 9.2,
         id: '0068646',
         title: 'Godfather, The',
-        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/iVZ3JAcAjmguGPnRNfWFOtLHOuY.jpg'
+        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/iVZ3JAcAjmguGPnRNfWFOtLHOuY.jpg',
+        favorite: true,
     },
     {
         actors: [
@@ -156,10 +157,11 @@ export const popular = [
                 id: '0000338'
             }
         ],
-        rating: 9.0,
+        imdbRating: 9.0,
         id: '0071562',
         title: 'Godfather: Part II, The',
-        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/amvmeQWheahG3StKwIE1f7jRnkZ.jpg'
+        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/amvmeQWheahG3StKwIE1f7jRnkZ.jpg',
+        favorite: true,
     },
     {
         actors: [
@@ -210,10 +212,11 @@ export const popular = [
                 id: '0634240'
             }
         ],
-        rating: 9.0,
+        imdbRating: 9.0,
         id: '0468569',
         title: 'Dark Knight, The',
-        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/qJ2tW6WMUDux911r6m7haRef0WH.jpg'
+        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
+        favorite: false,
     },
     {
         actors: [
@@ -251,7 +254,7 @@ export const popular = [
                 id: '0001486'
             }
         ],
-        rating: 8.9,
+        imdbRating: 8.9,
         id: '0050083',
         title: '12 Angry Men',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/7sf9CgJz30aXDvrg7DYYUQ2U91T.jpg'
@@ -304,10 +307,11 @@ export const popular = [
                 id: '0000399'
             }
         ],
-        rating: 8.9,
+        imdbRating: 8.9,
         id: '0137523',
         title: 'Fight Club',
-        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/wR5HZWdVpcXx9sevV1bQi7rP4op.jpg'
+        poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/wR5HZWdVpcXx9sevV1bQi7rP4op.jpg',
+        favorite: true,
     }
 ]
 
@@ -323,7 +327,7 @@ WITH n {
   .year,
   .languages,
   .plot,
-  rating: n.imdbRating,
+  imdbRating: n.imdbRating,
   directors: [ (n)<-[:DIRECTED]-(d) | d { id: d.imdbId, .name } ],
   actors: [ (n)<-[:ACTED_IN]-(p) | p { id: p.imdbId, .name } ][0..5],
   genres: [ (n)-[:IN_GENRE]->(g) | g {link: '/genres/'+ g.name, .name}]
@@ -378,7 +382,7 @@ export const latest = [
                 id: '0002653'
             }
         ],
-        rating: 6.9,
+        imdbRating: 6.9,
         id: '0113497',
         title: 'Jumanji',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/vgpXmVaVyUL7GGiDeiK1mKEKzcX.jpg'
@@ -423,7 +427,7 @@ export const latest = [
                 id: '0222043'
             }
         ],
-        rating: 6.6,
+        imdbRating: 6.6,
         id: '0113228',
         title: 'Grumpier Old Men',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/1FSXpj5e8l4KH6nVFO5SPUeraOt.jpg'
@@ -472,7 +476,7 @@ export const latest = [
                 id: '0001845'
             }
         ],
-        rating: 5.6,
+        imdbRating: 5.6,
         id: '0114885',
         title: 'Waiting to Exhale',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/4wjGMwPsdlvi025ZqR4rXnFDvBz.jpg'
@@ -513,7 +517,7 @@ export const latest = [
                 id: '0796124'
             }
         ],
-        rating: 5.9,
+        imdbRating: 5.9,
         id: '0113041',
         title: 'Father of the Bride Part II',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/lf9RTErt8BSLQy98aSFblElvsCQ.jpg'
@@ -563,7 +567,7 @@ export const latest = [
                 id: '0000520'
             }
         ],
-        rating: 8.2,
+        imdbRating: 8.2,
         id: '0113277',
         title: 'Heat',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/rrBuGu0Pjq7Y2BWSI6teGfZzviY.jpg'
@@ -620,7 +624,7 @@ export const latest = [
                 id: '0005124'
             }
         ],
-        rating: 8.3,
+        imdbRating: 8.3,
         id: '0114709',
         title: 'Toy Story',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg'
@@ -674,7 +678,7 @@ export const goodfellas = {
             born: '1942-11-17'
         },
     ],
-    rating: 8.7,
+    imdbRating: 8.7,
     languages: ['English', 'Italian'],
     id: '0099685',
     title: 'Goodfellas',
@@ -683,7 +687,7 @@ export const goodfellas = {
     ratingCount: 124,
     ratings: [
         {
-            rating: 2.0,
+            imdbRating: 2.0,
             user: {
                 name: 'Catherine Trujillo',
                 id: '570'
@@ -691,7 +695,7 @@ export const goodfellas = {
             timestamp: 1475784311
         },
         {
-            rating: 5.0,
+            imdbRating: 5.0,
             user: {
                 name: 'Teresa Graham',
                 id: '457'
@@ -699,7 +703,7 @@ export const goodfellas = {
             timestamp: 1471383372
         },
         {
-            rating: 5.0,
+            imdbRating: 5.0,
             user: {
                 name: 'Meredith Leonard',
                 id: '519'
@@ -707,7 +711,7 @@ export const goodfellas = {
             timestamp: 1471150621
         },
         {
-            rating: 4.0,
+            imdbRating: 4.0,
             user: {
                 name: 'Dr. Angela Johnson',
                 id: '56'
@@ -715,7 +719,7 @@ export const goodfellas = {
             timestamp: 1467003139
         },
         {
-            rating: 5.0,
+            imdbRating: 5.0,
             user: {
                 name: 'Melissa King',
                 id: '483'
@@ -728,7 +732,7 @@ export const goodfellas = {
 /**
 MATCH (m:Movie {title: "Goodfellas"})-[r:RATED]-(u:User)
 WITH {
-rating: r.rating, timestamp: r.timestamp,
+imdbRating: r.rating, timestamp: r.timestamp,
 user: u {id: u.userId, .name}
 } AS r
 ORDER BY r.timestamp DESC
@@ -736,7 +740,7 @@ RETURN collect(r)[0..5]
  */
 export const ratings = [
     {
-        rating: 2.0,
+        imdbRating: 2.0,
         user: {
             name: 'Catherine Trujillo',
             id: '570'
@@ -744,7 +748,7 @@ export const ratings = [
         timestamp: 1475784311
     },
     {
-        rating: 5.0,
+        imdbRating: 5.0,
         user: {
             name: 'Teresa Graham',
             id: '457'
@@ -752,7 +756,7 @@ export const ratings = [
         timestamp: 1471383372
     },
     {
-        rating: 5.0,
+        imdbRating: 5.0,
         user: {
             name: 'Meredith Leonard',
             id: '519'
@@ -760,7 +764,7 @@ export const ratings = [
         timestamp: 1471150621
     },
     {
-        rating: 4.0,
+        imdbRating: 4.0,
         user: {
             name: 'Dr. Angela Johnson',
             id: '56'
@@ -768,7 +772,7 @@ export const ratings = [
         timestamp: 1467003139
     },
     {
-        rating: 5.0,
+        imdbRating: 5.0,
         user: {
             name: 'Melissa King',
             id: '483'
@@ -789,13 +793,13 @@ RETURN n {
   .year,
   .languages,
   .plot,
-  rating: n.imdbRating,
+  imdbRating: n.imdbRating,
   genres: [ (n)-[:IN_GENRE]->(g) | g {link: '/genres/'+ g.name, .name}]
 } AS movie
 
 , avg(r2.rating) AS rating ORDER BY rating DESC LIMIT 5
  */
-export const simmilar = [
+export const similar = [
     {
         languages: [
             'English'
@@ -820,7 +824,7 @@ export const simmilar = [
                 name: 'Thriller'
             }
         ],
-        rating: 6.9,
+        imdbRating: 6.9,
         id: '0116361',
         title: 'Freeway',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/m0pAARUq3foDWFsrUmlYDHtNPE9.jpg'
@@ -837,7 +841,7 @@ export const simmilar = [
                 name: 'Drama'
             }
         ],
-        rating: 8.4,
+        imdbRating: 8.4,
         id: '0056592',
         title: 'To Kill a Mockingbird',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/ymbVkjMBqRFNJsxDUKXR27Kqsxa.jpg'
@@ -868,7 +872,7 @@ export const simmilar = [
                 name: 'Fantasy'
             }
         ],
-        rating: 8.1,
+        imdbRating: 8.1,
         id: '0093191',
         title: 'Wings of Desire (Himmel über Berlin, Der)',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/iZQs2vUeCzvS1KfZJ6uYNCGJBBV.jpg'
@@ -897,7 +901,7 @@ export const simmilar = [
                 name: 'Crime'
             }
         ],
-        rating: 8.4,
+        imdbRating: 8.4,
         id: '0108598',
         title: 'Wallace & Gromit: The Wrong Trousers',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/wRTCxYHx1d9diFFmOHQZT7CjdUV.jpg'
@@ -922,7 +926,7 @@ export const simmilar = [
                 name: 'Drama'
             }
         ],
-        rating: 8.5,
+        imdbRating: 8.5,
         id: '0043014',
         title: 'Sunset Blvd. (a.k.a. Sunset Boulevard)',
         poster: 'https://image.tmdb.org/t/p/w440_and_h660_face/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg'

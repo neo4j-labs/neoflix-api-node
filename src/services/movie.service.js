@@ -7,20 +7,20 @@ export default class MovieService {
         // Assign the driver here
     }
 
-    all() {
-        return Promise.resolve(popular)
+    async all(userId) {
+        return popular
     }
 
-    findById(id) {
-        return Promise.resolve(goodfellas)
+    async findById(id, userId) {
+        return goodfellas
     }
 
-    getSimilarMovies(id, limit = 6, skip = 0) {
-        return Promise.resolve(popular.slice(skip, skip + limit))
+    async getSimilarMovies(id, limit = 6, skip = 0) {
+        return popular.slice(skip, skip + limit)
     }
 
-    getByGenre(name, limit = 6, skip = 0) {
-        return Promise.resolve(popular.slice(skip, skip + limit))
+    async getByGenre(name, limit = 6, skip = 0) {
+        return popular.slice(skip, skip + limit)
     }
 
 }

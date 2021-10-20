@@ -1,4 +1,4 @@
-import { reviews } from "../../test/fixtures/reviews.js";
+import { ratings } from "../../test/fixtures/ratings.js";
 
 export default class ReviewService {
     driver;
@@ -8,7 +8,7 @@ export default class ReviewService {
     }
 
     forMovie(id, limit, skip) {
-        return Promise.resolve(reviews)
+        return Promise.resolve(ratings)
     }
 
 }
