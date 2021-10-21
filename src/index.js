@@ -6,6 +6,7 @@ import movies from './routes/movies.routes.js'
 import genres from './routes/genres.routes.js'
 import auth from './routes/auth.routes.js'
 import account from './routes/account.routes.js'
+import people from './routes/people.routes.js'
 import errorMiddleware from './middleware/error.middleware.js'
 import passport from 'passport'
 import './passport/index.js'
@@ -29,6 +30,7 @@ app.use('/movies', movies)
 app.use('/genres', genres)
 app.use('/auth', auth)
 app.use('/account', account)
+app.use('/people', people)
 
 // Handle Errors
 app.use(errorMiddleware)

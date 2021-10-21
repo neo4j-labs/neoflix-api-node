@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import passport from 'passport'
 import NotFoundError from '../errors/not-found.error.js'
 import MovieService from '../services/movie.service.js'
 import RatingService from '../services/rating.service.js'
@@ -6,10 +7,14 @@ import { getPagination } from '../utils.js'
 
 const router = new Router()
 
+router.use(passport.authenticate(['jwt', 'anonymous'], { session: false }))
+
 router.get('/', async (req, res) => {
     try {
+        const { orderBy, order, limit, skip } = getPagination(req)
+
         const movieService = new MovieService()
-        const movies = await movieService.all()
+        const movies = await movieService.all(orderBy, order, limit, skip)
 
         res.json(movies)
     }

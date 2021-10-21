@@ -11,6 +11,8 @@ router.post('/login',
     }
 )
 
+
+passport.authenticate
 router.post('/register', async (req, res, next) => {
     try {
         const { email, password, name } = req.body
